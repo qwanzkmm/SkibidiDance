@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject tempWednesday;
     public GameObject tempPhonk;
+
+    private AdController _adController;
     private void Start()
     {
         if (PlayerPrefs.HasKey("coins"))
@@ -44,6 +46,7 @@ public class GameManager : MonoBehaviour
             LoadAll();
         }
         music.clip = standart.clip;
+        _adController = GetComponent<AdController>();
     }
 
     private void Update()
@@ -183,8 +186,7 @@ public class GameManager : MonoBehaviour
 
     public void CoinsForAds()
     {
-        coins += 1000;
-        //show ad
+        _adController.ShowRewarded();
     }
 
 
